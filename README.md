@@ -15,7 +15,7 @@ Hauptverzeichnis (z.B: SchiLiftApp) verwendet werden:
 - `git push origin master`
 
 Achtung! Es kann sein, dass sich Daten seit dem letzten `git pull origin master`
-verändert haben und dass `git push -u origin master` nicht möglich ist. Um
+verändert haben und dass `git push origin master` nicht möglich ist. Um
 dieses Problem zu lösen genügt es (meist) einfach `git pull origin master`
 erneut aufzurufen. Ist dies nicht möglich, heißt das, dass 2 oder mehr Leute an
 gleichen Dateien arbeiten. In diesem Fall muss "gemerged" werden, dh. die
