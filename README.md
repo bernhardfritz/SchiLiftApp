@@ -1,9 +1,8 @@
-SchiLiftApp
-==========
+#SchiLiftApp
 
 Discussions @ http://piratepad.net/BHbYxNODG5
 
-#Info zur Verwendung von git
+##Info zur Verwendung von git
 Zum lokalen Anlegen des git repository muss einmalig
 `git clone https://github.com/bernhardfritz/SchiLiftApp.git` eingegeben werden.
 
