@@ -40,7 +40,7 @@ public class QRcodeData {
 		  return Days.daysBetween(LocalDateTime.now(), End).getDays();
 		  
 	}
-	public Integer getLeftHours(){ //returns Integer with left Hors from now until end
+	public Integer getLeftHours(){ //returns Integer with left Hours from now until end
 		 return Hours.hoursBetween(LocalDateTime.now(), End).getHours() % 24; 
 	}
 	
