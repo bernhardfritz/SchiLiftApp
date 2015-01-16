@@ -35,7 +35,7 @@ public class DBManager {
 	public Schigebiet getSchigebiet(String gemeinde) {
 		Schigebiet schigebiet = new Schigebiet(gemeinde);
 		
-		List<Schilift> lifte = Schilift.find.where().ieq("gemeinde", gemeinde).findList();
+		List<Schilift> lifte = Schilift.find.where().like("gemeinde", gemeinde.toLowerCase()+"%").findList();
 		for (Schilift l : lifte) {
 			schigebiet.addSchilift(l);
 		}
@@ -43,5 +43,7 @@ public class DBManager {
 		return schigebiet;
 	}
 	
-	// TODO: public Schilift getSchilift(long id) {}
+	public Schilift getSchilift(Long id) {
+		return Schilift.find.byId(id);
+	}
 }
