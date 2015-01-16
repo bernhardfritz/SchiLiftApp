@@ -26,4 +26,14 @@ public class Schigebiet {
 	public List<Schilift> getSchilifte() {
 		return schilifte;
 	}
+
+	@Override
+	public boolean equals(Object arg0) {
+		return this.getGemeinde().toLowerCase().equals(((Schigebiet)arg0).getGemeinde().toLowerCase());
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.getGemeinde().hashCode();
+	}
 }
