@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.binary.Hex;
 
-
+// TODO: hier auch wieder singleton pattern anwenden
 public class HashManager {
 	private static MessageDigest algorythm;
 	
@@ -17,6 +17,7 @@ public class HashManager {
 		}	
 		
 	}
+	
 	public static String codeString(String x) { //encodes the given String with MessageDigest
 		algorythm.update(x.getBytes());
 		byte[] digest = algorythm.digest();
