@@ -6,26 +6,12 @@ import org.joda.time.LocalDateTime;
 import org.joda.time.Minutes;
 
 public class QRcodeData {
-	// TODO: Attribute sollten private sein und für userID und location sollten getter-Methoden verfügbar sein.
-	public Integer userID;
-	public LocalDateTime Start;
-	public LocalDateTime End;
-	public Integer Location;
+	private Integer userID;
+	private LocalDateTime Start;
+	private LocalDateTime End;
+	private Integer Location;
 
-	// TODO: Konstruktor ist nicht wirklich benutzerfreundlich, besser wäre wenn
-	// man nur 2 Parameter (StartDate, EndDate) übergeben muss. Das kann gelöst
-	// werden indem man z.B. den aktuellen Konstruktor ändert oder einen
-	// zusätzlichen Konstruktor anlegt.
 	
-<<<<<<< HEAD
-	//Constructor
-	public QRcodeData(Integer userID,Integer StartYear,Integer StartMonth, Integer StartDay, Integer StartHour,Integer StartMinute,  Integer EndYear, Integer EndMonth, Integer EndDay, Integer EndHour,Integer EndMinute, Integer Location){
-		this.userID=userID;
-		this.Start = new LocalDateTime(StartYear, StartMonth, StartDay, StartHour, StartMinute);
-		this.End= new LocalDateTime(EndYear, EndMonth, EndDay, EndHour, EndMinute);
-		this.Location=Location;
-		
-=======
 	// Constructor
 	public QRcodeData(Integer userID, Integer StartYear, Integer StartMonth,
 			Integer StartDay, Integer StartMinute, Integer StartHour,
@@ -37,15 +23,17 @@ public class QRcodeData {
 		this.End = new LocalDateTime(EndYear, EndMonth, EndDay, EndHour,
 				EndMinute);
 		this.Location = Location;
-
->>>>>>> ec8507cdf685a3106a21aabea5049b91cd0c4470
+	}
+	
+	public QRcodeData(Integer userID, LocalDateTime Start, LocalDateTime End, Integer Location){
+		this.userID = userID;
+		this.Location = Location;
+		this.Start=Start;
+		this.End=End;
 	}
 
-	// TODO: hier könnte man die toString() Methode überschreiben, um einheitlich zu bleiben.
-	public String InfoToString() { // Creates a String out of all the
-									// Information
-		String string = this.userID.toString() + this.Start.toString()
-				+ this.End.toString() + this.Location.toString();
+	public String toString() { //overwrites toString() and Creates a String out of all the Information
+		String string = this.userID.toString() + this.Start.toString()+ this.End.toString() + this.Location.toString();
 		return string;
 	}
 
@@ -81,4 +69,21 @@ public class QRcodeData {
 				+ getLeftMinutes().toString();
 		return left;
 	}
+
+	public Integer getUserID() {
+		return userID;
+	}
+
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+
+	public Integer getLocation() {
+		return Location;
+	}
+
+	public void setLocation(Integer location) {
+		Location = location;
+	}
+	
 }

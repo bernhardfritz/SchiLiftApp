@@ -5,9 +5,18 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.binary.Hex;
 
-// TODO: hier auch wieder singleton pattern anwenden
+
 public class HashManager {
+	
 	private static MessageDigest algorythm;
+	
+	private static class SingletonHelper {
+		private static final HashManager INSTANCE = new HashManager();
+	}
+
+	public static HashManager getInstance() {
+		return SingletonHelper.INSTANCE;
+	}
 	
 	public HashManager() { // creates a MessageDigest with MD5
 		try {
@@ -24,4 +33,11 @@ public class HashManager {
 		String output = Hex.encodeHexString(digest);
 		return output;
 }
+	
+	
+	public String generateHash(QRcodeData data) { // creates a Hash with a QRcodeData
+		String DataString = data.toString();
+		String codeString = codeString(DataString);
+		return codeString;
+	}
 }
