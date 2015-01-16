@@ -1,38 +1,55 @@
 package controllers;
 
+
+import org.joda.time.Days;
+import org.joda.time.Hours;
+import org.joda.time.LocalDateTime;
+import org.joda.time.Minutes;
+
+
+
 public class QRcodeData {
 	public Integer userID;
-	public Integer StartYear;
-	public Integer StartMonth;
-	public Integer StartDay;
-	public Integer StartMinute;
-	public Integer StartHour;
-	public Integer EndYear;
-	public Integer EndMonth;
-	public Integer EndDay;
-	public Integer EndMinute;
-	public Integer EndHour;
+	public LocalDateTime Start;
+	public LocalDateTime End;
 	public Integer Location;
 	
+	//Constructor
 	public QRcodeData(Integer userID,Integer StartYear,Integer StartMonth, Integer StartDay, Integer StartMinute, Integer StartHour, Integer EndYear, Integer EndMonth, Integer EndDay,Integer EndMinute, Integer EndHour, Integer Location){
 		this.userID=userID;
-		this.StartYear=StartYear;
-		this.StartMonth=StartMonth;
-		this.StartDay=StartDay;
-		this.StartMinute=StartMinute;
-		this.StartHour=StartHour;
-		this.EndYear=EndYear;
-		this.EndMonth=EndMonth;
-		this.EndDay=EndDay;
-		this.EndMinute=EndMinute;
-		this.EndHour=EndHour;
+		this.Start = new LocalDateTime(StartYear, StartMonth, StartDay, StartHour, StartMinute);
+		this.End= new LocalDateTime(EndYear, EndMonth, EndDay, EndHour, EndMinute);
 		this.Location=Location;
 		
 	}
 	
 	public String InfoToString(){ //Creates a String out of all the Information 
-		String string=this.userID.toString()+this.StartYear.toString()+this.StartMonth.toString()+this.StartDay.toString()+this.StartMinute.toString()+this.StartHour.toString()+this.EndYear.toString()+this.EndMonth.toString()+this.EndDay.toString()+this.EndMinute.toString()+this.EndHour.toString()+this.Location.toString();
-		return string;
+		String string=this.userID.toString()+this.Start.toString()+this.End.toString()+this.Location.toString();
+		return string;	
 	}
 	
+	public Boolean isValid(){ //checks if Ticket is still valid
+		if (End.isAfter(LocalDateTime.now()) && Start.isBefore(LocalDateTime.now())){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public Integer getLeftDays(){ //returns Integer with left Days from now until end
+		  return Days.daysBetween(LocalDateTime.now(), End).getDays();
+		  
+	}
+	public Integer getLeftHours(){ //returns Integer with left Hors from now until end
+		 return Hours.hoursBetween(LocalDateTime.now(), End).getHours() % 24; 
+	}
+	
+	public Integer getLeftMinutes(){ //returns Integer with left Minutes from now until end
+		 return Minutes.minutesBetween(LocalDateTime.now(), End).getMinutes() % 60 ;
+	}
+	
+	public String leftTime(){ //returns String with left Time from now until end
+		String left= "Days: "+getLeftDays().toString()+"   Hours: "+getLeftHours().toString()+"   Minutes: "+getLeftMinutes().toString();
+		return left;
+	}
 }
