@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.Schigebiet;
@@ -35,7 +36,7 @@ public class DBManager {
 	public Schigebiet getSchigebiet(String gemeinde) {
 		Schigebiet schigebiet = new Schigebiet(gemeinde);
 		
-		List<Schilift> lifte = Schilift.find.where().like("gemeinde", gemeinde.toLowerCase()+"%").findList();
+		List<Schilift> lifte = Schilift.find.where().ieq("gemeinde", gemeinde).findList();
 		for (Schilift l : lifte) {
 			schigebiet.addSchilift(l);
 		}
@@ -45,5 +46,30 @@ public class DBManager {
 	
 	public Schilift getSchilift(Long id) {
 		return Schilift.find.byId(id);
+	}
+	
+	public List<Schigebiet> getSchigebiete(String suchbegriff) {
+		return getSchigebieteFromLifte(Schilift.find.where().like("gemeinde", suchbegriff.toLowerCase()+"%").findList());
+	}
+	
+	public List<Schigebiet> getAlleSchigebiete() {		
+		return getSchigebieteFromLifte(Schilift.find.all());
+	}
+	
+	private List<Schigebiet> getSchigebieteFromLifte(List<Schilift> lifte) {
+		List<Schigebiet> schigebiete = new ArrayList<Schigebiet>();
+		
+		for (Schilift l : lifte) {
+			Schigebiet tempSchigebiet = new Schigebiet(l.getGemeinde());
+			if (schigebiete.contains(tempSchigebiet)) {
+				schigebiete.get(schigebiete.indexOf(tempSchigebiet)).addSchilift(l);
+			}
+			else {
+				tempSchigebiet.addSchilift(l);
+				schigebiete.add(tempSchigebiet);
+			}
+		}
+		
+		return schigebiete;
 	}
 }
