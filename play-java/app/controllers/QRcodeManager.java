@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -66,7 +67,7 @@ public class QRcodeManager {
 		QRcodeManager.hash = hash;
 	}
 	
-	public static String readQRCode(String filePath, String charset, Map hintMap){ //decodes a given qr code (filepath, "UTF-8", new HashMap(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+	public static String readQRCode(String filePath, String charset){ //decodes a given qr code (filepath, "UTF-8")
 		BinaryBitmap binaryBitmap = null;
 		try {
 			binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(ImageIO.read(new FileInputStream(filePath)))));
@@ -75,8 +76,9 @@ public class QRcodeManager {
 			e.printStackTrace();
 		}
 		Result qrCodeResult = null;
+
 		try {
-			qrCodeResult = new MultiFormatReader().decode(binaryBitmap,hintMap);
+			qrCodeResult = new MultiFormatReader().decode(binaryBitmap);
 		} catch (NotFoundException e) {
 			System.out.println("File "+filePath+" not Found");
 			e.printStackTrace();
