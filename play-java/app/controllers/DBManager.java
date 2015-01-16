@@ -7,7 +7,9 @@ import models.Schilift;
 
 public class DBManager {
 	
-	private DBManager() {}
+	private DBManager() {
+		init();
+	}
 	
 	private static class SingletonHelper {
 		private static final DBManager INSTANCE = new DBManager();
@@ -30,7 +32,7 @@ public class DBManager {
 		}
 	}
 	
-	public Schigebiet getSchiegebiet(String gemeinde) {
+	public Schigebiet getSchigebiet(String gemeinde) {
 		Schigebiet schigebiet = new Schigebiet(gemeinde);
 		
 		List<Schilift> lifte = Schilift.find.where().ieq("gemeinde", gemeinde).findList();
@@ -40,4 +42,6 @@ public class DBManager {
 		
 		return schigebiet;
 	}
+	
+	// TODO: public Schilift getSchilift(long id) {}
 }
