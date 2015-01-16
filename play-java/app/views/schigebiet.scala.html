@@ -20,7 +20,7 @@
 		</button>
 		<ul class="dropdown-menu" role="menu">
 			@for(schilift<-schilifte) {
-				<li><a href="@routes.Application.schilift("@schilift.getId()")">@schilift.getName()</a></li>
+				<li><a href="@routes.Application.schilift(schilift.getId())">@schilift.getName()</a></li>
 			}
 		</ul>
 	</div>

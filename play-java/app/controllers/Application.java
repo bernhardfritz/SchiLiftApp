@@ -12,7 +12,7 @@ public class Application extends Controller {
     }
     
     public static Result suche(String suchbegriff) {
-    	return ok(suche.render(suchbegriff));
+    	return ok(suche.render(suchbegriff,null));
     }
     
     public static Result schigebiet(String gemeinde) {
@@ -20,9 +20,9 @@ public class Application extends Controller {
     	return ok(schigebiet.render(gemeinde,dbman.getSchigebiet(gemeinde).getSchilifte()));
     }
     
-    public static Result schilift(String id) {
+    public static Result schilift(Long id) {
     	DBManager dbman = DBManager.getInstance();
-    	return ok(schilift.render(null));
+    	return ok(schilift.render(dbman.getSchilift(id)));
     }
 
 }

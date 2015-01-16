@@ -2,28 +2,63 @@
 @main("SchiLiftApp") {
 <div class="main">
 	<ol class="breadcrumb">
-		<li><a href="#">Suche</a></li>
-		<li><a href="#">Achenkirch</a></li>
-		<li class="active">Schilift 1</li>
+		<li><a href="@routes.Application.suche(schilift.getGemeinde())">Suche</a></li>
+		<li><a href="@routes.Application.schigebiet(schilift.getGemeinde())">@schilift.getGemeinde()</a></li>
+		<li class="active">@schilift.getName()</li>
 	</ol>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Schilift 1</th>
+				<th>@schilift.getName()</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tr>
-			<td>Anzahl Personen</td>
-			<td>4</td>
+			<td>Baujahr</td>
+			<td>@schilift.getBaujahr()</td>
 		</tr>
 		<tr>
-			<td>Höhe Talstation</td>
-			<td>1000m</td>
+			<td>Typ</td>
+			<td>@schilift.getTyp()</td>
+		</tr>
+		<tr>
+			<td>Breite</td>
+			<td>@schilift.getBreite()</td>
+		</tr>
+		<tr>
+			<td>Förderleistung</td>
+			<td>@schilift.getFoerderleistung()</td>
 		</tr>
 		<tr>
 			<td>Höhe Bergstation</td>
-			<td>2000m</td>
+			<td>@schilift.getHoeheBergstation()</td>
+		</tr>
+		<tr>
+			<td>Höhendifferenz</td>
+			<td>@schilift.getHoehendifferenz()</td>
+		</tr>
+			<td>Höhe Talstation</td>
+			<td>@schilift.getHoeheTalstation()</td>
+		</tr>
+		<tr>
+			<td>Personen pro Aufhängung</td>
+			<td>@schilift.getPersonenProAufhaengung()</td>
+		</tr>
+		<tr>
+			<td>schräge Länge</td>
+			<td>@schilift.getSchraegeLaenge()</td>
+		</tr>
+		<tr>
+			<td>Transportkapazität</td>
+			<td>@schilift.getTransportkapazitaet()</td>
+		</tr>
+		<tr>
+			<td>Sitzplatzheizung</td>
+			<td>@schilift.isSitzplatzheizung()</td>
+		</tr>
+		<tr>
+			<td>Wetterschutz</td>
+			<td>@schilift.isWetterschutz()</td>
 		</tr>
 	</table>
 </div>

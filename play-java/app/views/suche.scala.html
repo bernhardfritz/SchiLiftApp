@@ -1,4 +1,4 @@
-@(suchbegriff: String)
+@(suchbegriff: String, schigebiete: List[Schigebiet])
 @main("SchiLiftApp") {
 <div class="suche">
 	<form>
@@ -11,18 +11,9 @@
 	</form>
 	<br />
 	<div class="list-group">
-		<a href="#" class="list-group-item"> Achenkirch </a> <a href="#"
-			class="list-group-item"> Aldrans </a> <a href="#"
-			class="list-group-item"> Alpbach </a> <a href="#"
-			class="list-group-item"> Angerberg </a> <a href="#"
-			class="list-group-item"> Anras </a> <a href="#"
-			class="list-group-item"> Arzl im Pitztal </a> <a href="#"
-			class="list-group-item"> Aschau im Zillertal </a> <a href="#"
-			class="list-group-item"> Assling </a> <a href="#"
-			class="list-group-item"> Assling </a> <a href="#"
-			class="list-group-item"> Aurach bei Kitzbühel </a> <a href="#"
-			class="list-group-item"> Außervillgraten </a> <a href="#"
-			class="list-group-item"> Axams </a>
+		@for(schigebiet<-schigebiete) {
+			<a href="@routes.Application.schigebiet(schigebiet.getGemeinde())" class="list-group-item">@schigebiet.getGemeinde()</a>
+		}
 	</div>
 </div>
 }
