@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET     /suche/:suchbegriff         controllers.Application.suche(suchbegriff: String)
+GET     /suche                      controllers.Application.suche(suchbegriff: String?="")
 GET     /schigebiet/:gemeinde       controllers.Application.schigebiet(gemeinde: String)
 GET     /schilift/:id               controllers.Application.schilift(id: Long)
 
