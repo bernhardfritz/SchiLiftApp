@@ -5,19 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 
 import com.google.zxing.BinaryBitmap;
-import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
 
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
@@ -42,7 +39,6 @@ public class QRcodeManager {
 	
 	public String generateHash(QRcodeData data){ //creates a Hash with a String
 		String DataString = data.InfoToString();
-		getHash();
 		String codeString = HashManager.codeString(DataString);
 		return codeString;
 }

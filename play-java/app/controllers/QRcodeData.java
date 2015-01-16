@@ -15,7 +15,7 @@ public class QRcodeData {
 	public Integer Location;
 	
 	//Constructor
-	public QRcodeData(Integer userID,Integer StartYear,Integer StartMonth, Integer StartDay, Integer StartMinute, Integer StartHour, Integer EndYear, Integer EndMonth, Integer EndDay,Integer EndMinute, Integer EndHour, Integer Location){
+	public QRcodeData(Integer userID,Integer StartYear,Integer StartMonth, Integer StartDay, Integer StartHour,Integer StartMinute,  Integer EndYear, Integer EndMonth, Integer EndDay, Integer EndHour,Integer EndMinute, Integer Location){
 		this.userID=userID;
 		this.Start = new LocalDateTime(StartYear, StartMonth, StartDay, StartHour, StartMinute);
 		this.End= new LocalDateTime(EndYear, EndMonth, EndDay, EndHour, EndMinute);
