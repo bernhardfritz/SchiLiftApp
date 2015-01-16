@@ -1,10 +1,21 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import org.apache.poi.ss.usermodel.Row;
 
+import play.db.ebean.Model;
 import controllers.Tool;
 
-public class Schilift {
+@Entity
+public class Schilift extends Model {
+
+	private static final long serialVersionUID = -5632600707152700197L;
+
+	@Id
+	private Long id;
+	
 	private String name;
 	private int plz;
 	private String gemeinde;
@@ -46,6 +57,16 @@ public class Schilift {
 		setTransportkapazitaet(Tool.StringToInt(row.getCell(16).toString()));
 	}
 	
+	public static Finder<Long, Schilift> find = new Finder<Long, Schilift>(Long.class, Schilift.class);
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -184,7 +205,7 @@ public class Schilift {
 
 	@Override
 	public String toString() {
-		return "Schilift [name=" + name + ", plz=" + plz + ", gemeinde="
+		return "Schilift [id=" + id + ", name=" + name + ", plz=" + plz + ", gemeinde="
 				+ gemeinde + ", baujahr=" + baujahr + ", typ=" + typ
 				+ ", zubringerfunktion=" + zubringerfunktion + ", breite="
 				+ breite + ", personenProAufhaengung=" + personenProAufhaengung
