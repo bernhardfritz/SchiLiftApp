@@ -10,11 +10,13 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
@@ -48,7 +50,6 @@ public class QRcodeManager {
 
 	public void generateQRcode(String codeString) { // creates a qrcode.png with a Hash
 		try{
-		System.out.println(codeString);
 		QRCode.from(codeString).to(ImageType.PNG)
 				.writeTo(new FileOutputStream(new File("qrcode.png"))); // Stream implementation fehlt
 		} catch (FileNotFoundException e) {
@@ -65,9 +66,21 @@ public class QRcodeManager {
 		QRcodeManager.hash = hash;
 	}
 	
-	public static String readQRCode(String filePath, String charset, Map hintMap) throws FileNotFoundException, IOException, NotFoundException {
-		BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(ImageIO.read(new FileInputStream(filePath)))));
-		Result qrCodeResult = new MultiFormatReader().decode(binaryBitmap,hintMap);
+	public static String readQRCode(String filePath, String charset, Map hintMap){ //decodes a given qr code (filepath, "UTF-8", new HashMap(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+		BinaryBitmap binaryBitmap = null;
+		try {
+			binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(ImageIO.read(new FileInputStream(filePath)))));
+		} catch (IOException e) {
+			System.out.println("File "+filePath+" not Found");
+			e.printStackTrace();
+		}
+		Result qrCodeResult = null;
+		try {
+			qrCodeResult = new MultiFormatReader().decode(binaryBitmap,hintMap);
+		} catch (NotFoundException e) {
+			System.out.println("File "+filePath+" not Found");
+			e.printStackTrace();
+		}
 		return qrCodeResult.toString();
 	}
 }

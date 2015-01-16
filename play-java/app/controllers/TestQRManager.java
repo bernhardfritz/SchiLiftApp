@@ -21,6 +21,6 @@ public class TestQRManager {
 		
 		Map hintMap = new HashMap();
 		hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-		System.out.println(QRcodeManager.readQRCode("qrcode.png", ("UTF-8"), hintMap));
+		System.out.println(QRcodeManager.readQRCode("qrcode.png", "UTF-8", hintMap));
 	}
 }
