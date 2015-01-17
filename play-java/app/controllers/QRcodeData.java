@@ -9,31 +9,31 @@ public class QRcodeData {
 	private Integer userID;
 	private LocalDateTime Start;
 	private LocalDateTime End;
-	private Integer Location;
+	private String Gemeinde;
 
 	
 	// Constructor
 	public QRcodeData(Integer userID, Integer StartYear, Integer StartMonth,
 			Integer StartDay, Integer StartMinute, Integer StartHour,
 			Integer EndYear, Integer EndMonth, Integer EndDay,
-			Integer EndMinute, Integer EndHour, Integer Location) {
+			Integer EndMinute, Integer EndHour, String Gemeinde) {
 		this.userID = userID;
 		this.Start = new LocalDateTime(StartYear, StartMonth, StartDay,
 				StartHour, StartMinute);
 		this.End = new LocalDateTime(EndYear, EndMonth, EndDay, EndHour,
 				EndMinute);
-		this.Location = Location;
+		this.Gemeinde = Gemeinde;
 	}
 	
-	public QRcodeData(Integer userID, LocalDateTime Start, LocalDateTime End, Integer Location){
+	public QRcodeData(Integer userID, LocalDateTime Start, LocalDateTime End, String Gemeinde){
 		this.userID = userID;
-		this.Location = Location;
+		this.Gemeinde = Gemeinde;
 		this.Start=Start;
 		this.End=End;
 	}
 
 	public String toString() { //overwrites toString() and Creates a String out of all the Information
-		String string = this.userID.toString() + this.Start.toString()+ this.End.toString() + this.Location.toString();
+		String string = this.userID.toString() + this.Start.toString()+ this.End.toString() + Gemeinde;
 		return string;
 	}
 
@@ -62,8 +62,7 @@ public class QRcodeData {
 		return Minutes.minutesBetween(LocalDateTime.now(), End).getMinutes() % 60;
 	}
 
-	public String leftTime() { // returns String with left Time from now until
-								// end
+	public String leftTime() { // returns String with left Time from now until end
 		String left = "Days: " + getLeftDays().toString() + "   Hours: "
 				+ getLeftHours().toString() + "   Minutes: "
 				+ getLeftMinutes().toString();
@@ -85,12 +84,12 @@ public class QRcodeData {
 		this.userID = userID;
 	}
 
-	public Integer getLocation() {
-		return Location;
+	public String getGemeinde() {
+		return Gemeinde;
 	}
 
-	public void setLocation(Integer location) {
-		Location = location;
+	public void setLocation(String Gemeinde) {
+		this.Gemeinde = Gemeinde;
 	}
 	
 }
