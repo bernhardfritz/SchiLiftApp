@@ -74,7 +74,7 @@ public class DBManager {
 		return schigebiete;
 	}
 	
-	public void registerQRcode(QRcodeData qrCodeData) {
+	/*public void registerQRcode(QRcodeData qrCodeData) {
 		qrCodeData.save();
 	}
 	
@@ -88,5 +88,5 @@ public class DBManager {
 		}
 		
 		return qrCodeDataList;
-	}
+	}*/
 }
