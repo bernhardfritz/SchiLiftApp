@@ -69,6 +69,13 @@ public class QRcodeData {
 				+ getLeftMinutes().toString();
 		return left;
 	}
+	
+	public String toHash() { // creates a Hash with a QRcodeData
+		HashManager x=HashManager.getInstance();
+		String DataString = this.toString();
+		String codeString = x.codeString(DataString);
+		return codeString;
+	}
 
 	public Integer getUserID() {
 		return userID;

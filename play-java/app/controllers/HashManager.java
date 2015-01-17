@@ -18,7 +18,7 @@ public class HashManager {
 		return SingletonHelper.INSTANCE;
 	}
 	
-	public HashManager() { // creates a MessageDigest with MD5
+	private HashManager() { // creates a MessageDigest with MD5
 		try {
 			algorythm = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException nsae) {
@@ -27,17 +27,10 @@ public class HashManager {
 		
 	}
 	
-	public static String codeString(String x) { //encodes the given String with MessageDigest
+	public String codeString(String x) { //encodes the given String with MessageDigest
 		algorythm.update(x.getBytes());
 		byte[] digest = algorythm.digest();
 		String output = Hex.encodeHexString(digest);
 		return output;
-}
-	
-	
-	public String generateHash(QRcodeData data) { // creates a Hash with a QRcodeData
-		String DataString = data.toString();
-		String codeString = codeString(DataString);
-		return codeString;
 	}
 }
