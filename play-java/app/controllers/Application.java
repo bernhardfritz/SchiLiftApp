@@ -33,5 +33,9 @@ public class Application extends Controller {
     	DBManager dbman = DBManager.getInstance();
     	return ok(schilift.render(dbman.getSchilift(id)));
     }
+    
+    public static Result about() {
+    	return ok(about.render());
+    }
 
 }
