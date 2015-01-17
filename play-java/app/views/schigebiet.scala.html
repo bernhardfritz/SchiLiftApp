@@ -1,12 +1,12 @@
-@(gemeinde: String, schilifte: List[Schilift])
-@main("SchiLiftApp") {
+@(gemeinde: String, schilifte: List[Schilift]) @main("SchiLiftApp") {
 <div class="main">
 	<ol class="breadcrumb">
 		<li><a href="@routes.Application.suche()">Suche</a></li>
 		<li class="active">@gemeinde</li>
 	</ol>
-	<button class="btn btn-primary btn-lg btn-block" type="button" href="@routes.Application.buyCode(@gemeinde)">QRcode
-		kaufen</button>
+	<form action=@routes.Application.kaufen(gemeinde)>
+		<button class="btn btn-primary btn-lg btn-block" type="submit">QR-Code kaufen</button>
+	</form>
 	<br />
 	<button class="btn btn-default btn-lg btn-block" type="button" href="#">Zu
 		Favoriten hinzufügen</button>
@@ -20,7 +20,7 @@
 		</button>
 		<ul class="dropdown-menu" role="menu">
 			@for(schilift<-schilifte) {
-				<li><a href="@routes.Application.schilift(schilift.getId())">@schilift.getName()</a></li>
+			<li><a href="@routes.Application.schilift(schilift.getId())">@schilift.getName()</a></li>
 			}
 		</ul>
 	</div>

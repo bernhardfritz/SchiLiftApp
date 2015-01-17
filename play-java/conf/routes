@@ -10,6 +10,7 @@ GET     /schigebiet/:gemeinde/kaufen     controllers.Application.kaufen(gemeinde
 GET     /schilift/:id                    controllers.Application.schilift(id: Long)
 GET     /about						     controllers.Application.about()
 GET     /qrgen/:s                        controllers.Application.qrgen(s: String)
+GET     /login							 controllers.Application.login()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                    controllers.Assets.at(path="/public", file)

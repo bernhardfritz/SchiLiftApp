@@ -46,4 +46,8 @@ public class Application extends Controller {
     	QRcodeManager qrman = QRcodeManager.getInstance();
     	return ok(qrman.generateBinary(hash)).as("image/jpeg");
     }
+    
+    public static Result login() {
+    	return ok(index.render(""));
+    }
 }
