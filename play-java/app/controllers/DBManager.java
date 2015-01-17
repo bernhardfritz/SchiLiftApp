@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.QRcodeData;
 import models.Schigebiet;
 import models.Schilift;
 
@@ -22,11 +23,11 @@ public class DBManager {
 	
 	public void init() {
 		if (Schilift.find.all().isEmpty()) {
-			insertData();
+			insertSchiliftData();
 		}
 	}
 	
-	private void insertData() {
+	private void insertSchiliftData() {
 		List<Schilift> lifte = SchiliftManager.getInstance().getSchilifte();
 		for (Schilift l : lifte) {
 			l.save();
@@ -71,5 +72,21 @@ public class DBManager {
 		}
 		
 		return schigebiete;
+	}
+	
+	public void registerQRcode(QRcodeData qrCodeData) {
+		qrCodeData.save();
+	}
+	
+	public List<QRcodeData> getQRcodeDataList(Integer userID) {
+		List<QRcodeData> qrCodeDataList = new ArrayList<QRcodeData>();
+		
+		for (QRcodeData qrCodeData : QRcodeData.find.where().ieq("user_id", userID.toString()).findList()) {
+			if (qrCodeData.isValid()) {
+				qrCodeDataList.add(qrCodeData);
+			}
+		}
+		
+		return qrCodeDataList;
 	}
 }

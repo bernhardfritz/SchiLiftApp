@@ -1,11 +1,20 @@
-package controllers;
+package models;
+
+import javax.persistence.Entity;
 
 import org.joda.time.Days;
 import org.joda.time.Hours;
 import org.joda.time.LocalDateTime;
 import org.joda.time.Minutes;
 
-public class QRcodeData {
+import play.db.ebean.Model;
+import controllers.HashManager;
+
+@Entity
+public class QRcodeData extends Model {
+
+	private static final long serialVersionUID = 8052894568875887475L;
+
 	private Integer userID;
 	private LocalDateTime Start;
 	private LocalDateTime End;
@@ -78,6 +87,8 @@ public class QRcodeData {
 		String codeString = x.codeString(DataString);
 		return codeString;
 	}
+	
+	public static Finder<Integer, QRcodeData> find = new Finder<Integer, QRcodeData>(Integer.class, QRcodeData.class);
 
 	public Integer getUserID() {
 		return userID;

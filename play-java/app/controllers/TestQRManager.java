@@ -3,6 +3,8 @@ package controllers;
 
 import java.io.IOException;
 
+import models.QRcodeData;
+
 import com.google.zxing.NotFoundException;
 
 
