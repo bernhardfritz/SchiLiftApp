@@ -3,6 +3,14 @@
 
 # --- !Ups
 
+create table qrcode_data (
+  user_id                   integer,
+  start                     timestamp,
+  end                       timestamp,
+  gemeinde                  varchar(255),
+  hash_code                 varchar(255))
+;
+
 create table schilift (
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(255),
@@ -30,6 +38,8 @@ create table schilift (
 # --- !Downs
 
 PRAGMA foreign_keys = OFF;
+
+drop table qrcode_data;
 
 drop table schilift;
 
