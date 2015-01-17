@@ -34,4 +34,8 @@ public class Application extends Controller {
     	return ok(schilift.render(dbman.getSchilift(id)));
     }
 
+    public static Result qrgen(String hash) {
+    	QRcodeManager qrman = QRcodeManager.getInstance();
+    	return ok(qrman.generateBinary(hash)).as("image/jpeg");
+    }
 }
