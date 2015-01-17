@@ -14,10 +14,10 @@ public class TestQRManager {
 		
 		System.out.println("Time left: "+d.leftTime());
 		
-		System.out.println("created Hashcode: "+d.toHash());
-		m.generateQRcode(d.toHash());
+		System.out.println("created Hashcode: "+d.getHashCode());
+		m.generateQRcode(d.getHashCode());
 		
-		System.out.println("decoded QRcode: " + QRcodeManager.readQRCode("qrcode.png"));
+		System.out.println("decoded QRcode:   " + QRcodeManager.readQRCode("qrcode.png"));
 		System.out.println("decoded QRcode: " + QRcodeManager.readQRCode("Test.png"));
 	}
 }

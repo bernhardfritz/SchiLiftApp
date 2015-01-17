@@ -10,6 +10,7 @@ public class QRcodeData {
 	private LocalDateTime Start;
 	private LocalDateTime End;
 	private String Gemeinde;
+	private String HashCode;
 
 	
 	// Constructor
@@ -23,6 +24,7 @@ public class QRcodeData {
 		this.End = new LocalDateTime(EndYear, EndMonth, EndDay, EndHour,
 				EndMinute);
 		this.Gemeinde = Gemeinde;
+		this.HashCode=this.toHash();
 	}
 	
 	public QRcodeData(Integer userID, LocalDateTime Start, LocalDateTime End, String Gemeinde){
@@ -30,6 +32,7 @@ public class QRcodeData {
 		this.Gemeinde = Gemeinde;
 		this.Start=Start;
 		this.End=End;
+		this.HashCode=this.toHash();
 	}
 
 	public String toString() { //overwrites toString() and Creates a String out of all the Information
@@ -69,7 +72,7 @@ public class QRcodeData {
 		return left;
 	}
 	
-	public String toHash() { // creates a Hash with a QRcodeData
+	private String toHash() { // creates a Hash with a QRcodeData
 		HashManager x=HashManager.getInstance();
 		String DataString = this.toString();
 		String codeString = x.codeString(DataString);
@@ -90,6 +93,10 @@ public class QRcodeData {
 
 	public void setLocation(String Gemeinde) {
 		this.Gemeinde = Gemeinde;
+	}
+	
+	public String getHashCode(){
+		return this.HashCode;
 	}
 	
 }
