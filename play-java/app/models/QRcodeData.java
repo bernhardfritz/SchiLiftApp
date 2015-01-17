@@ -76,11 +76,24 @@ public class QRcodeData {
 	}
 
 	public String leftTime() { // returns String with left Time from now until end
-		String left = "Days: " + getLeftDays().toString() + "   Hours: "
-				+ getLeftHours().toString() + "   Minutes: "
+		String left = null;
+		if (getLeftDays()>0){
+		left = "Verbliebene Zeit\nTage: " + getLeftDays().toString() + "   Stunden: "
+				+ getLeftHours().toString() + "   Minuten: "
 				+ getLeftMinutes().toString();
+		}else{
+			if (getLeftHours()>0){
+			left =  "Verbliebene Zeit\nStunden: "
+					+ getLeftHours().toString() + "   Minuten: "
+					+ getLeftMinutes().toString();
+			}else{
+				left =  "Verbliebene Zeit\nMinuten: "
+						+ getLeftMinutes().toString();
+				}
+			}
 		return left;
 	}
+		
 	
 	private String toHash() { // creates a Hash with a QRcodeData
 		HashManager x=HashManager.getInstance();
