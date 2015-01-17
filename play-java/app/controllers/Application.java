@@ -29,6 +29,10 @@ public class Application extends Controller {
     	return ok(schigebiet.render(gemeinde,dbman.getSchigebiet(gemeinde).getSchilifte()));
     }
     
+    public static Result kaufen(String gemeinde) {
+    	return ok(kaufen.render(gemeinde));
+    }
+    
     public static Result schilift(Long id) {
     	DBManager dbman = DBManager.getInstance();
     	return ok(schilift.render(dbman.getSchilift(id)));
@@ -41,13 +45,5 @@ public class Application extends Controller {
     public static Result qrgen(String hash) {
     	QRcodeManager qrman = QRcodeManager.getInstance();
     	return ok(qrman.generateBinary(hash)).as("image/jpeg");
-    }
-    
-    public static Result login() {
-    	return ok(index.render(""));
-    }
-    
-    public static Result buyCode(String gemeinde) {
-    	return ok(buyCode.render(gemeinde));
     }
 }
