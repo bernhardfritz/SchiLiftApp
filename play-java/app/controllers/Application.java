@@ -50,4 +50,8 @@ public class Application extends Controller {
     public static Result login() {
     	return ok(index.render(""));
     }
+    
+    public static Result test() {
+    	return ok(test.render());
+    }
 }
