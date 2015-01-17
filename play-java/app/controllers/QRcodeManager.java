@@ -1,10 +1,13 @@
 package controllers;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import javassist.bytecode.ByteArray;
 
 import javax.imageio.ImageIO;
 
@@ -14,7 +17,6 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-
 
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
@@ -42,6 +44,10 @@ public class QRcodeManager {
 			System.out.println("File qrcode.png not found");
 			e.printStackTrace();
 		}
+	}
+	
+	public byte[] generateBinary(String s) {
+		return QRCode.from(s).to(ImageType.JPG).stream().toByteArray();
 	}
 
 	public static String readQRCode(String filePath) { // decodes a QRcode given a filepath
