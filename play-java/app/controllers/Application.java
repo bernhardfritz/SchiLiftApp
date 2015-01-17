@@ -38,4 +38,8 @@ public class Application extends Controller {
     	return ok(about.render());
     }
 
+    public static Result qrgen(String hash) {
+    	QRcodeManager qrman = QRcodeManager.getInstance();
+    	return ok(qrman.generateBinary(hash)).as("image/jpeg");
+    }
 }
