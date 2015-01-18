@@ -1,10 +1,11 @@
 @(qrCodeDatas: List[QRcodeData]) @main("SchiLiftApp") {
-<br />
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/index.css")">
+<section class="block">
+@if(qrCodeDatas.size > 0) {
 <div id="carousel-example-generic" class="carousel slide"
 	data-interval="false">
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner" role="listbox">
-
 		@for(index <- 0 until qrCodeDatas.size){
 			@if(index == 0){
 			<div class="item active">
@@ -33,5 +34,10 @@
 		class="sr-only">Next</span>
 	</a>
 	</div>
+	} else {
+		<br/>
+		<center><h2>Keine QR-Codes verfügbar</h2></center>
+	}
+	</section>
 </div>
 }

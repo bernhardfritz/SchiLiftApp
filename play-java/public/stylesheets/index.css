@@ -1,0 +1,9 @@
+.carousel .item {
+    width: 100%; /*slider width*/
+    max-height: 100%; /*slider height*/
+}
+/*add some makeup*/
+.carousel .carousel-control {
+    background: none;
+    border: none;
+}

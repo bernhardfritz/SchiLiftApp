@@ -82,9 +82,9 @@ public class DBManager {
 		List<QRcodeData> qrCodeDataList = new ArrayList<QRcodeData>();
 		
 		for (QRcodeData qrCodeData : QRcodeData.find.where().ieq("user_id", userID.toString()).findList()) {
-			if (qrCodeData.isValid()) {
+			//if (qrCodeData.isValid()) {
 				qrCodeDataList.add(qrCodeData);
-			}
+			//}
 		}
 		
 		return qrCodeDataList;
