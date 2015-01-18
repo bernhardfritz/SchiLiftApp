@@ -1,8 +1,8 @@
 package controllers;
 
+import models.QRcodeData;
 import play.*;
 import play.mvc.*;
-
 import views.html.*;
 
 public class Application extends Controller {
@@ -51,8 +51,12 @@ public class Application extends Controller {
     	return ok(login.render(""));
     }
     
-    public static Result gekauft(String gemeinde, String datepicker1, String datepicker2) {
-    	return ok(gekauft.render(gemeinde,datepicker1,datepicker2));
+    public static Result gekauft(String gemeinde, String startdatetime, String enddatetime) {
+    	DBManager dbman = DBManager.getInstance();
+    	System.out.println(startdatetime);
+    	QRcodeData qrCodeData = new QRcodeData(1, startdatetime, enddatetime, gemeinde);
+    	dbman.registerQRcode(qrCodeData);
+    	return ok(gekauft.render(gemeinde,startdatetime,enddatetime));
     }
     
     public static Result test() {
