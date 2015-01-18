@@ -48,7 +48,7 @@ public class Application extends Controller {
     }
     
     public static Result login() {
-    	return ok(index.render());
+    	return ok(login.render(""));
     }
     
     public static Result test() {
