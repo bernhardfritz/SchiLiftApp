@@ -20,3 +20,14 @@ body {
     font-size: 120%;
     font-weight: 700;
 }
+
+.carousel-caption {
+  color: #000; 
+}
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+.carousel{
+	height:200px
+}
