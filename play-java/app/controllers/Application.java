@@ -8,7 +8,7 @@ import views.html.*;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render(""));
+        return ok(index.render());
     }
     
     public static Result suche() {
@@ -48,7 +48,7 @@ public class Application extends Controller {
     }
     
     public static Result login() {
-    	return ok(index.render(""));
+    	return ok(index.render());
     }
     
     public static Result test() {
