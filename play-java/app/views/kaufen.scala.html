@@ -5,12 +5,12 @@
 		<li><a href="@routes.Application.schigebiet(gemeinde)">@gemeinde</a></li>
 		<li class="active">QR-Code kaufen</li>
 	</ol>
-	<form>
+	<form action="@routes.Application.gekauft(gemeinde)">
 		<div class="form-group">
 			<h4>von</h4>
-			<input type="text" class="form-control" id="datetimepicker1" required autofocus readonly>
+			<input type="text" class="form-control" id="datetimepicker1" name="startdatetime" required autofocus readonly>
 			<h4>bis</h4>
-			<input type="text" class="form-control" id="datetimepicker2" required readonly>
+			<input type="text" class="form-control" id="datetimepicker2" name="enddatetime" required readonly>
 			<br />
 			<button type="submit" class="btn btn-lg btn-default">Kaufen</button>
 		</div>
