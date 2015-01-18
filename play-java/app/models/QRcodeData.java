@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 
 import org.joda.time.Days;
@@ -42,6 +44,29 @@ public class QRcodeData {
 		this.Gemeinde = Gemeinde;
 		this.Start=Start;
 		this.End=End;
+		this.HashCode=this.toHash();
+	}
+	
+	public QRcodeData(String data){ //Constructor for a String (!! 2015/1/1 12:01 muss als 201501011201 geschrieben werden!!)
+		char[] dataarray= data.toCharArray(); 
+		this.userID=Character.getNumericValue(dataarray[0])*1000+Character.getNumericValue(dataarray[1])*100+Character.getNumericValue(dataarray[2])*10+Character.getNumericValue(dataarray[3]);
+		Integer StartYear=Character.getNumericValue(dataarray[4])*1000+Character.getNumericValue(dataarray[5])*100+Character.getNumericValue(dataarray[6])*10+Character.getNumericValue(dataarray[7]);
+		Integer StartMonth= Character.getNumericValue(dataarray[8])*10+Character.getNumericValue(dataarray[9]);
+		Integer StartDay=Character.getNumericValue(dataarray[10])*10+Character.getNumericValue(dataarray[11]);
+		Integer StartHour=Character.getNumericValue(dataarray[12])*10+Character.getNumericValue(dataarray[13]);
+		Integer StartMinute=Character.getNumericValue(dataarray[14])*10+Character.getNumericValue(dataarray[15]);
+		Integer EndYear=Character.getNumericValue(dataarray[16])*1000+Character.getNumericValue(dataarray[17])*100+Character.getNumericValue(dataarray[18])*10+Character.getNumericValue(dataarray[19]);
+		Integer EndMonth= Character.getNumericValue(dataarray[20])*10+Character.getNumericValue(dataarray[21]);
+		Integer EndDay=Character.getNumericValue(dataarray[22])*10+Character.getNumericValue(dataarray[23]);
+		Integer EndHour=Character.getNumericValue(dataarray[24])*10+Character.getNumericValue(dataarray[25]);
+		Integer EndMinute=Character.getNumericValue(dataarray[26])*10+Character.getNumericValue(dataarray[27]);
+		this.Start = new LocalDateTime(StartYear, StartMonth, StartDay,StartHour, StartMinute);
+		this.End = new LocalDateTime(EndYear, EndMonth, EndDay, EndHour,EndMinute);
+		String Gemeinde="";
+		for (int i=28; i<dataarray.length; i++){
+			Gemeinde+=dataarray[i];
+		}
+		this.Gemeinde= Gemeinde;
 		this.HashCode=this.toHash();
 	}
 
