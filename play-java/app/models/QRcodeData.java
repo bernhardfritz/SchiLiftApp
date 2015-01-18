@@ -15,7 +15,7 @@ import play.db.ebean.Model;
 import controllers.HashManager;
 
 @Entity
-public class QRcodeData {
+public class QRcodeData extends Model{
 
 	private static final long serialVersionUID = 8052894568875887475L;
 
@@ -25,7 +25,7 @@ public class QRcodeData {
 	private String Gemeinde;
 	private String HashCode;
 	
-	//public static Finder<Integer, QRcodeData> find = new Finder<Integer, QRcodeData>(Integer.class, QRcodeData.class);
+	public static Finder<Integer, QRcodeData> find = new Finder<Integer, QRcodeData>(Integer.class, QRcodeData.class);
 
 	// Constructor
 	public QRcodeData(Integer userID, Integer StartYear, Integer StartMonth,
