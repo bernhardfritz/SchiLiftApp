@@ -51,6 +51,10 @@ public class Application extends Controller {
     	return ok(index.render());
     }
     
+    public static Result gekauft(String gemeinde, String datepicker1, String datepicker2) {
+    	return ok(gekauft.render(gemeinde,datepicker1,datepicker2));
+    }
+    
     public static Result test() {
     	return ok(test.render());
     }
