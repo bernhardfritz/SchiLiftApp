@@ -8,12 +8,14 @@ import org.joda.time.Days;
 import org.joda.time.Hours;
 import org.joda.time.LocalDateTime;
 import org.joda.time.Minutes;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import play.db.ebean.Model;
 import controllers.HashManager;
 
 @Entity
-public class QRcodeData {
+public class QRcodeData extends Model{
 
 	private static final long serialVersionUID = 8052894568875887475L;
 
@@ -23,7 +25,7 @@ public class QRcodeData {
 	private String Gemeinde;
 	private String HashCode;
 	
-	//public static Finder<Integer, QRcodeData> find = new Finder<Integer, QRcodeData>(Integer.class, QRcodeData.class);
+	public static Finder<Integer, QRcodeData> find = new Finder<Integer, QRcodeData>(Integer.class, QRcodeData.class);
 
 	// Constructor
 	public QRcodeData(Integer userID, Integer StartYear, Integer StartMonth,
@@ -47,7 +49,7 @@ public class QRcodeData {
 		this.HashCode=this.toHash();
 	}
 	
-	public QRcodeData(String data){ //Constructor for a String (!! 2015/1/1 12:01 muss als 201501011201 geschrieben werden!!)
+	/*public QRcodeData(String data){ //Constructor for a String (!! 2015/1/1 12:01 muss als 201501011201 geschrieben werden!!)
 		char[] dataarray= data.toCharArray(); 
 		this.userID=Character.getNumericValue(dataarray[0])*1000+Character.getNumericValue(dataarray[1])*100+Character.getNumericValue(dataarray[2])*10+Character.getNumericValue(dataarray[3]);
 		Integer StartYear=Character.getNumericValue(dataarray[4])*1000+Character.getNumericValue(dataarray[5])*100+Character.getNumericValue(dataarray[6])*10+Character.getNumericValue(dataarray[7]);
@@ -68,6 +70,14 @@ public class QRcodeData {
 		}
 		this.Gemeinde= Gemeinde;
 		this.HashCode=this.toHash();
+	}*/
+	
+	public QRcodeData(Integer userID,String startdatetime, String enddatetime,String gemeinde) { // zb. 01/14/2015 11:21 AM
+		this.userID=userID;
+	    Start = LocalDateTime.parse(startdatetime, DateTimeFormat.forPattern("MM/dd/yyyy KK:mm aa"));
+	    End = LocalDateTime.parse(enddatetime, DateTimeFormat.forPattern("MM/dd/yyyy KK:mm aa"));
+	    this.Gemeinde=gemeinde;
+	    HashCode = toHash();
 	}
 
 	public String toString() { //overwrites toString() and Creates a String out of all the Information
