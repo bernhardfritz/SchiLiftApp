@@ -1,4 +1,12 @@
-@(gemeinde: String, startdatetime: String, enddatetime: String)
+@(gemeinde: String, startdatetime: String, enddatetime: String, hashcode: String)
 @main("SchiLiftApp") {
+<div class="main">
 	<h2>Erfolgreich gekauft!</h2>
+	<br />
+	@gemeinde
+	<br />
+	<img src="@routes.Application.qrgen(hashcode)" alt="notfound" />
+	<br />
+	<p>Gültig von @startdatetime<br />bis @enddatetime</p>
+</div>
 }

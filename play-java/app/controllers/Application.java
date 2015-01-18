@@ -56,7 +56,7 @@ public class Application extends Controller {
     	System.out.println(startdatetime);
     	QRcodeData qrCodeData = new QRcodeData(1, startdatetime, enddatetime, gemeinde);
     	dbman.registerQRcode(qrCodeData);
-    	return ok(gekauft.render(gemeinde,startdatetime,enddatetime));
+    	return ok(gekauft.render(gemeinde, startdatetime, enddatetime, qrCodeData.getHashCode()));
     }
     
     public static Result test() {
