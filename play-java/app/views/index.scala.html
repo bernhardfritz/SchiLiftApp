@@ -1,40 +1,25 @@
-@main("SchiLiftApp") {
+@(qrCodeDatas: List[QRcodeData]) @main("SchiLiftApp") {
 <br />
 <div id="carousel-example-generic" class="carousel slide"
 	data-interval="false">
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner" role="listbox">
 
-		<div class="item active">
-			<div class="main">
-			<strong> <font size=4> gemeinde </font> </strong> <br /> 
-			<img src="@routes.Application.qrgen("hashcode")" alt="notfound" />
-			<br />
-			<h5>
-				Gültig von startdatetime<br />bis enddatetime
-			</h5>
+		@for(index <- 0 until qrCodeDatas.size){
+			@if(index == 0){
+			<div class="item active">
+			}else{
+			<div class="item">
+			}
+				<div class="main">
+					<strong> <font size=4>@qrCodeDatas(index).getGemeinde()</font>
+					</strong> <br /> <img src="@routes.Application.qrgen(qrCodeDatas(index).getHashCode())" alt="notfound" /> <br />
+					<h5>
+						Gültig von @qrCodeDatas(index).getStartDateTimeString()<br />bis @qrCodeDatas(index).getEndDateTimeString()
+					</h5>
+				</div>
 			</div>
-		</div>
-		<div class="item">
-			<div class="main">
-			gemeinde <br /> 
-			<img src="@routes.Application.qrgen("hashcode")" alt="notfound" />
-			<br />
-			<p>
-				Gültig von startdatetime<br />bis enddatetime
-			</p>
-			</div>
-		</div>
-		<div class="item">
-			<div class="main">
-			gemeinde <br /> 
-			<img src="@routes.Application.qrgen("hashcode")" alt="notfound" />
-			<br />
-			<p>
-				Gültig von startdatetime<br />bis enddatetime
-			</p>
-			</div>
-		</div>
+		}
 	</div>
 
 	<!-- Controls -->

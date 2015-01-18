@@ -9,7 +9,7 @@ public class Application extends Controller {
 
     public static Result index() {
     	DBManager dbman = DBManager.getInstance();
-        return ok(index.render(dbman.getQRcodeDataList(1));
+        return ok(index.render(dbman.getQRcodeDataList(1)));
     }
     
     public static Result suche() {
