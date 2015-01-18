@@ -77,6 +77,7 @@ public class QRcodeData {
 	    Start = LocalDateTime.parse(startdatetime, DateTimeFormat.forPattern("MM/dd/yyyy KK:mm aa"));
 	    End = LocalDateTime.parse(enddatetime, DateTimeFormat.forPattern("MM/dd/yyyy KK:mm aa"));
 	    this.Gemeinde=gemeinde;
+	    HashCode = toHash();
 	}
 
 	public String toString() { //overwrites toString() and Creates a String out of all the Information
