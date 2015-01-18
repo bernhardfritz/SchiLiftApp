@@ -5,7 +5,7 @@
 		<li><a href="@routes.Application.schigebiet(gemeinde)">@gemeinde</a></li>
 		<li class="active">QR-Code kaufen</li>
 	</ol>
-	<form>
+	<form action="@routes.Application.gekauft()">
 		<div class="form-group">
 			<h4>von</h4>
 			<input type="text" class="form-control" id="datetimepicker1" required autofocus readonly>
