@@ -5,29 +5,39 @@
 		<li><a href="@routes.Application.schigebiet(gemeinde)">@gemeinde</a></li>
 		<li class="active">QR-Code kaufen</li>
 	</ol>
-
+	<h4>von</h4>
 	<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
+		<div class="row">
+			<div class='col-sm-6'>
+				<div class="form-group">
+					<div class='input-group date' id='datetimepicker1'>
+						<input type='text' class="form-control" id="von" /> <span
+							class="input-group-addon"><span
+							class="glyphicon glyphicon-calendar"></span> </span>
+					</div>
+					<h4>bis</h4>
+					<div class='input-group date' id='datetimepicker2'>
+						<input type='text' class="form-control" id="bis"/> <span
+							class="input-group-addon"><span
+							class="glyphicon glyphicon-calendar"></span> </span>
+					</div>
 
+				</div>
+			</div>
+			<script type="text/javascript">
+				$(function() {
+					$('#datetimepicker1').datetimepicker();
+				});
+				$(function() {
+					$('#datetimepicker2').datetimepicker();
+				});
+			</script>
+		</div>
+	</div>
 	<br />
-	<button type="button" class="btn btn-lg btn-default">Kaufen</button>
-
+	<form >
+		<button type="submit" class="btn btn-lg btn-default">Kaufen</button>
+	</form>
 </div>
 
 }
