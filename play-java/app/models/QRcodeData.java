@@ -122,17 +122,15 @@ public class QRcodeData extends Model{
 		String left = null;
 		if (isValid()){
 		if (getLeftDays()>0){
-		left = "Verbliebene Zeit - \nTage: " + getLeftDays().toString() + "   Stunden: "
-				+ getLeftHours().toString() + "   Minuten: "
-				+ getLeftMinutes().toString();
+		left = "Verbliebene Zeit: \n" +getLeftDays().toString() +" Tage, " + getLeftHours().toString() + " Stunden, "
+				+ getLeftMinutes().toString() + " Minuten";
 		}else{
 			if (getLeftHours()>0){
-			left =  "Verbliebene Zeit\nStunden: "
-					+ getLeftHours().toString() + "   Minuten: "
-					+ getLeftMinutes().toString();
+			left =  "Verbliebene Zeit: \n" + getLeftHours().toString() + " Stunden, "
+					+ getLeftMinutes().toString() + " Minuten";
 			}else{
-				left =  "Verbliebene Zeit\nMinuten: "
-						+ getLeftMinutes().toString();
+				left = "Verbliebene Zeit: \n"
+						+ getLeftMinutes().toString() + " Minuten";
 				}
 			}
 		return left;
