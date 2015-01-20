@@ -25,7 +25,7 @@ public class QRcodeData extends Model{
 	private String Gemeinde;
 	private String HashCode;
 	
-	public static Finder<Integer, QRcodeData> find = new Finder<Integer, QRcodeData>(Integer.class, QRcodeData.class);
+	//public static Finder<Integer, QRcodeData> find = new Finder<Integer, QRcodeData>(Integer.class, QRcodeData.class);
 
 	// Constructor
 	public QRcodeData(Integer userID, Integer StartYear, Integer StartMonth,
