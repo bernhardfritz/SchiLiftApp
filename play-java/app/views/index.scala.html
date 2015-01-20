@@ -16,7 +16,7 @@
 					<strong> <font size=4>@qrCodeDatas(index).getGemeinde()</font>
 					</strong> <br /> <img src="@routes.Application.qrgen(qrCodeDatas(index).getHashCode())" alt="notfound" /> <br />
 					<h5>
-						Gültig von @qrCodeDatas(index).getStartDateTimeString()<br />Gültigkeit @qrCodeDatas(index).getEndDateTimeString()<br /><br /> @qrCodeDatas(index).leftTime()
+						@qrCodeDatas(index).leftTime()
 					</h5>
 				</div>
 			</div>
