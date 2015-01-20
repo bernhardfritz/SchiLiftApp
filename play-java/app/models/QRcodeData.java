@@ -120,8 +120,9 @@ public class QRcodeData extends Model{
 
 	public String leftTime() { // returns String with left Time from now until end
 		String left = null;
+		if (isValid()){
 		if (getLeftDays()>0){
-		left = "Verbliebene Zeit\nTage: " + getLeftDays().toString() + "   Stunden: "
+		left = "Verbliebene Zeit - \nTage: " + getLeftDays().toString() + "   Stunden: "
 				+ getLeftHours().toString() + "   Minuten: "
 				+ getLeftMinutes().toString();
 		}else{
@@ -135,6 +136,9 @@ public class QRcodeData extends Model{
 				}
 			}
 		return left;
+		}else{
+			return "Nicht Gültig";
+		}
 	}
 		
 	
