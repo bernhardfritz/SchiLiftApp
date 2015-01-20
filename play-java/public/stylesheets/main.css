@@ -13,7 +13,7 @@ body {
     width: 100%;
 }
 .dropdown-menu {
-    width: 100%
+    width: 100%;
 }
 .breadcrumb {
     background-color: #ffffff;
@@ -29,5 +29,5 @@ body {
 }
 
 .carousel{
-	height:200px
+	height: 100%;
 }

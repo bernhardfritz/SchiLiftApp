@@ -79,6 +79,14 @@ public class QRcodeData extends Model{
 	    this.Gemeinde=gemeinde;
 	    HashCode = toHash();
 	}
+	
+	public String getStartDateTimeString() {
+		return Start.toString(DateTimeFormat.forPattern("MM/dd/yyyy KK:mm aa"));
+	}
+	
+	public String getEndDateTimeString() {
+		return End.toString(DateTimeFormat.forPattern("MM/dd/yyyy KK:mm aa"));
+	}
 
 	public String toString() { //overwrites toString() and Creates a String out of all the Information
 		String string = this.userID.toString() + this.Start.toString()+ this.End.toString() + Gemeinde;
