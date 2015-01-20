@@ -6,6 +6,7 @@ import java.util.List;
 import models.QRcodeData;
 import models.Schigebiet;
 import models.Schilift;
+import models.User;
 
 public class DBManager {
 	
@@ -24,6 +25,9 @@ public class DBManager {
 	public void init() {
 		if (Schilift.find.all().isEmpty()) {
 			insertSchiliftData();
+		}
+		if (User.find.all().isEmpty()) {
+			registerUser(new User("admin@test.at", "secret"));
 		}
 	}
 	
@@ -88,5 +92,13 @@ public class DBManager {
 		}
 		
 		return qrCodeDataList;
+	}
+	
+	public void registerUser(User user) {
+		user.save();
+	}
+	
+	public User getUser(String email, String password) {
+		return User.find.where().ieq("email", email).ieq("password", HashManager.getInstance().codeString(password)).findUnique();
 	}
 }

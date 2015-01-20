@@ -1,23 +1,26 @@
-@(message: String)
+@(form: Form[controllers.Application.Login])
 @nonavbar("SchiLiftApp") {
 <div class="main">
 		<div class="container theme-showcase" role="main">
         <div class="container">
-            <form class="form-signin" action = @routes.Application.suche()>
-                 <h2 class="form-signin-heading">Wilkommen zu SchiLiftApp</h2>
+        	@if(form.hasGlobalErrors) {
+        		<p style="color: red; font-weight: bold;">
+        			@form.globalError.message
+        		</p>
+        	}
+        	
+            @helper.form(routes.Application.authenticate) {
+                <h2 class="form-signin-heading">Wilkommen zu SchiLiftApp</h2>
                 <br/>
-                <label for="inputEmail" class="sr-only">E-mail</label>                
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> </input>
+                <label for="email" class="sr-only">E-mail</label>                
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" value="@form("email").value"> </input>
                 <br/>
-                <label for="inputPassword" class="sr-only">Passwort</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> </input>
+                <label for="password" class="sr-only">Passwort</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password"> </input>
                 <br/>  
                            
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Einloggen</button>
-               
-                <br/>
-                <button class="btn btn-lg btn-default btn-block" type="submit">Registrieren</button>
-            </form>
+            }
         </div>
         <!-- /container -->
     </div>

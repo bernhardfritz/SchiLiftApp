@@ -32,6 +32,11 @@ create table schilift (
   transportkapazitaet       integer)
 ;
 
+create table user (
+  email                     varchar(255) primary key,
+  password                  varchar(255))
+;
+
 
 
 
@@ -42,6 +47,8 @@ PRAGMA foreign_keys = OFF;
 drop table qrcode_data;
 
 drop table schilift;
+
+drop table user;
 
 PRAGMA foreign_keys = ON;
 
