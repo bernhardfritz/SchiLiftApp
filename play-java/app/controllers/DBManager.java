@@ -28,6 +28,7 @@ public class DBManager {
 		}
 		if (User.find.all().isEmpty()) {
 			registerUser(new User("admin@test.at", "secret"));
+			registerUser(new User("user@test.at", "12345"));
 		}
 	}
 	
@@ -82,10 +83,10 @@ public class DBManager {
 		qrCodeData.save();
 	}
 	
-	public List<QRcodeData> getQRcodeDataList(Integer userID) {
+	public List<QRcodeData> getQRcodeDataList(String userEmail) {
 		List<QRcodeData> qrCodeDataList = new ArrayList<QRcodeData>();
 		
-		for (QRcodeData qrCodeData : QRcodeData.find.where().ieq("user_id", userID.toString()).findList()) {
+		for (QRcodeData qrCodeData : QRcodeData.find.where().ieq("user_email", userEmail).findList()) {
 			if (qrCodeData.isValid()) {
 				qrCodeDataList.add(qrCodeData);
 			}

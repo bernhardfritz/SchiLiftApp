@@ -3,9 +3,9 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import play.db.ebean.Model;
 import controllers.DBManager;
 import controllers.HashManager;
-import play.db.ebean.Model;
 
 @Entity
 public class User extends Model {
@@ -26,7 +26,7 @@ public class User extends Model {
 		return email;
 	}
 
-	public void seteMail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -37,7 +37,7 @@ public class User extends Model {
 	public void setPassword(String password) {
 		this.password = HashManager.getInstance().codeString(password);
 	}
-	
+
 	public static Finder<String, User> find = new Finder<String, User>(String.class, User.class);
 	
 	public static User authenticate(String email, String password) {

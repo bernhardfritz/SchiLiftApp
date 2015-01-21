@@ -4,7 +4,8 @@
 # --- !Ups
 
 create table qrcode_data (
-  user_id                   integer,
+  id                        integer primary key AUTOINCREMENT,
+  user_email                varchar(255),
   start                     timestamp,
   end                       timestamp,
   gemeinde                  varchar(255),

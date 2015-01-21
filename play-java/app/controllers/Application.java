@@ -33,7 +33,7 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result index() {
     	DBManager dbman = DBManager.getInstance();
-        return ok(index.render(dbman.getQRcodeDataList(1)));
+    	return ok(index.render(dbman.getQRcodeDataList(session().get("email"))));
     }
     
     @Security.Authenticated(Secured.class)
@@ -106,8 +106,7 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result gekauft(String gemeinde, String startdatetime, String enddatetime) {
     	DBManager dbman = DBManager.getInstance();
-    	System.out.println(startdatetime);
-    	QRcodeData qrCodeData = new QRcodeData(1, startdatetime, enddatetime, gemeinde);
+    	QRcodeData qrCodeData = new QRcodeData(session().get("email"), startdatetime, enddatetime, gemeinde);
     	dbman.registerQRcode(qrCodeData);
     	return ok(gekauft.render(gemeinde, startdatetime, enddatetime, qrCodeData.getHashCode()));
     }
