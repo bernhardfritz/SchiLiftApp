@@ -130,7 +130,9 @@ public class Application extends Controller {
     	}
     	else {
         	DBManager.getInstance().registerUser(new User(registerForm.get().email, registerForm.get().password));
-    		return redirect(routes.Application.login());
+        	session().clear();
+        	session("email", registerForm.get().email);
+    		return redirect(routes.Application.index());
     	}    	
     }
     
