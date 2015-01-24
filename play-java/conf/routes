@@ -19,6 +19,11 @@ GET     /login							 controllers.Application.login()
 POST	/login							 controllers.Application.authenticate()
 GET		/logout							 controllers.Application.logout()
 
+
+# Register
+GET		/register						 controllers.Application.gotoRegister()
+POST	/register						 controllers.Application.register()
+
 GET     /test                            controllers.Application.test()
 
 # Map static resources from the /public folder to the /assets URL path

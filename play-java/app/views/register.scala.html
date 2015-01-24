@@ -1,0 +1,28 @@
+@(form: Form[controllers.Application.Register])
+@nonavbar("SchiLiftApp") {
+<div class="main">
+		<div class="container theme-showcase" role="main">
+        <div class="container">
+        	@if(form.hasGlobalErrors) {
+        		<p style="color: red; font-weight: bold;">
+        			@form.globalError.message
+        		</p>
+        	}
+        	
+            @helper.form(routes.Application.register) {
+                <h2 class="form-signin-heading">SchiLiftApp - Registrierung</h2>
+                <br/>
+                <label for="email" class="sr-only">E-mail</label>                
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address"> </input>
+                <br/>
+                <label for="password" class="sr-only">Passwort</label>
+                <input type="text" id="password" name="password" class="form-control" placeholder="Password"> </input>
+                <br/>  
+                           
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button>
+            }
+        </div>
+        <!-- /container -->
+    </div>
+</div>
+}

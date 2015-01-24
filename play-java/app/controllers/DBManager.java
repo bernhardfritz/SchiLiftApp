@@ -102,4 +102,8 @@ public class DBManager {
 	public User getUser(String email, String password) {
 		return User.find.where().ieq("email", email).ieq("password", HashManager.getInstance().codeString(password)).findUnique();
 	}
+	
+	public List<User> getAlleUser() {
+		return User.find.all();
+	}
 }

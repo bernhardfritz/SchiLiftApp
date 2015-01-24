@@ -15,6 +15,7 @@ import views.html.schigebiet;
 import views.html.schilift;
 import views.html.suche;
 import views.html.test;
+import views.html.register;
 
 public class Application extends Controller {
 	
@@ -25,6 +26,20 @@ public class Application extends Controller {
     	public String validate() {
     		if (User.authenticate(email, password) == null) {
     			return "Invalid user or password!";
+    		}
+    		return null;
+    	}
+    }
+    
+    public static class Register {
+    	public String email;
+    	public String password;
+    	
+    	public String validate() {
+    		for (User u : DBManager.getInstance().getAlleUser()) {
+    			if (email == null || password == null || u.getEmail().equals(email)) {
+    				return "Invalid email address or password!";
+    			}
     		}
     		return null;
     	}
@@ -101,6 +116,22 @@ public class Application extends Controller {
     public static Result logout() {
     	session().clear();
     	return redirect(routes.Application.login());
+    }
+    
+    public static Result gotoRegister() {
+    	Form<Register> registerForm = Form.form(Register.class);
+    	return ok(register.render(registerForm));
+    }
+    
+    public static Result register() {
+    	Form<Register> registerForm = Form.form(Register.class).bindFromRequest();
+    	if (registerForm.hasErrors()) {
+    		return badRequest(register.render(registerForm));
+    	}
+    	else {
+        	DBManager.getInstance().registerUser(new User(registerForm.get().email, registerForm.get().password));
+    		return redirect(routes.Application.login());
+    	}    	
     }
     
     @Security.Authenticated(Secured.class)
