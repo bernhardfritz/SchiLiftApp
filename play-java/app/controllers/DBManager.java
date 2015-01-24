@@ -28,7 +28,6 @@ public class DBManager {
 		}
 		if (User.find.all().isEmpty()) {
 			registerUser(new User("admin@test.at", "secret"));
-			registerUser(new User("user@test.at", "12345"));
 		}
 	}
 	
