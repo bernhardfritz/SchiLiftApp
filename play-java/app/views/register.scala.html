@@ -1,6 +1,10 @@
 @(form: Form[controllers.Application.Register])
 @nonavbar("SchiLiftApp") {
 <div class="main">
+		<ol class="breadcrumb">
+			<li><a href="@routes.Application.login()">Login</a></li>
+			<li class="active">Registrierung</li>
+		</ol>
 		<div class="container theme-showcase" role="main">
         <div class="container">
         	@if(form.hasGlobalErrors) {
